@@ -3,7 +3,22 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
+void yourMove(char array[3][3]);
+void yourMoveP2(char array[3][3]);
+void printArray(char array[3][3]);
+int computerGoesFirst(char array[3][3]);
+int humanGoesFirst(char array[3][3]);
+void rotateClockwise(char array[3][3]);
+int rotateClockwise(char array[3][3], int rotations);
+int counterClockwise(char array[3][3], int rotations);
+bool checkWins(char array[3][3]);
+bool stopLosses(char array[3][3]);
+int twoPlayerGame(char array[3][3]);
+bool playerOneWinCheck(char array[3][3]);
+bool playerTwoWinCheck(char array[3][3]);
+void eraseArray(char array[3][3]);
 
+int playerOneLosses, playerOneDraws, playerOneWins, computerDraws, computerWins;
 int main(){
     int players = 0; 
     char playAgain = 'y';
@@ -685,5 +700,3 @@ void eraseArray(char array[3][3]){  //this erases the board at the end of each g
         }
     }
 }
-
-
