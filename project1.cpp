@@ -170,3 +170,109 @@ int computerGoesFirst(char array[3][3]){
     computerDraws++;
     return 0;
 }
+
+void printArray(char array[3][3]){
+    cout << " " << array[0][0] << " | " << array[0][1] << " | " << array[0][2] << endl;
+	cout << "___________" << endl;
+	cout << " " << array[1][0] << " | " << array[1][1] << " | " << array[1][2] << endl;
+	cout << "___________" << endl;
+	cout << " " << array[2][0] << " | " << array[2][1] << " | " << array[2][2] << endl << endl;
+    //this frequently called function prints the board
+}
+
+void yourMove(char array[3][3]){
+    int inputMove;
+    bool wrongInput = true;
+    while(wrongInput){
+        wrongInput = false;
+        cout << "Enter your move: " << endl;
+        cin >> inputMove;
+    	switch (inputMove)
+    	{               //A switch statement in a while loop is used for input, with the default
+            case 1:     //catching all invalid input 
+                if(array[0][0] == ' '){
+                    array[0][0] = 'O';
+                }
+                else{
+                cout << "Illegal move: That spot is taken" << endl;
+        	    wrongInput = true;
+                }
+        	    break;
+        	case 2:
+        	    if(array[0][1] == ' '){
+        	        array[0][1] = 'O';
+        	    }
+                else{
+                    cout << "Illegal move: that spot is taken" << endl;
+                    wrongInput = true;
+                }
+                break;
+        	case 3:
+        	    if(array[0][2] == ' '){
+        	        array[0][2] = 'O';
+        	    }
+                else{
+                    cout << "Illegal move: that spot is taken" << endl;
+                    wrongInput = true;
+                }
+                break;
+        	case 4:
+        	    if(array[1][0] == ' '){
+        	        array[1][0] = 'O';
+        	    }
+                else{
+                    cout << "Illegal move: that spot is taken" << endl;
+                    wrongInput = true;
+                }
+                break;
+        	case 5:
+        	    if(array[1][1] == ' '){
+        	        array[1][1] = 'O';
+        	    }
+                else{
+                    cout << "Illegal move: that spot is taken" << endl;
+                    wrongInput = true;
+                }
+                break;
+        	case 6:
+        	    if(array[1][2] == ' '){
+        	        array[1][2] = 'O';
+        	    }
+                else{
+                    cout << "Illegal move: that spot is taken" << endl;
+                    wrongInput = true;
+                }
+                break;
+        	case 7:
+        	    if(array[2][0] == ' '){
+        	        array[2][0] = 'O';
+        	    }
+                else{
+                    cout << "Illegal move: that spot is taken" << endl;
+                    wrongInput = true;
+                }
+                break;
+        	case 8:
+        	    if(array[2][1] == ' '){
+        	        array[2][1] = 'O';
+        	    }
+                else{
+                    cout << "Illegal move: that spot is taken" << endl;
+                    wrongInput = true;
+                }
+                break;
+        	case 9:
+        	    if(array[2][2] == ' '){
+        	        array[2][2] = 'O';
+        	    }
+                else{
+                    cout << "Illegal move: that spot is taken" << endl;
+                    wrongInput = true;
+                }
+                break;
+            default:
+                cout << "Invalid move: enter a number from 1-9" << endl;
+                wrongInput = true;
+    	}
+   	}
+}
