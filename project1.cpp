@@ -398,3 +398,79 @@ int humanGoesFirst(char array[3][3]){
     computerDraws++;
     return 0;
 }
+
+bool checkWins(char array[3][3]){   
+    //this function checks to see if the computer can win on the spot. If it can, it does, since that is the best move
+    if(array[0][0] == ' ' && ((array[0][1] == 'X' && array[0][2] == 'X')||(array[1][1] == 'X' && array[2][2] == 'X')||(array[1][0] == 'X' && array[2][0] == 'X'))){
+        array[0][0] = 'X';
+        return 1;
+    }
+    else if(array[0][2] == ' ' && ((array[0][1] == 'X' && array[0][0] == 'X')||(array[1][1] == 'X' && array[2][0] == 'X')||(array[1][2] == 'X' && array[2][2] == 'X'))){
+        array[0][2] = 'X';
+        return 1;
+    }
+    else if(array[2][2] == ' ' && ((array[0][2] == 'X' && array[1][2] == 'X')||(array[2][1] == 'X' && array[2][0] == 'X')||(array[1][1] == 'X' && array[0][0] == 'X'))){
+        array[2][2] = 'X';
+        return 1;
+    }
+    else if(array[2][0] == ' ' && ((array[0][0] == 'X' && array[1][0] == 'X')||(array[2][1] == 'X' && array[2][2] == 'X')||(array[1][1] == 'X' && array[0][2] == 'X'))){
+        array[2][0] = 'X';
+        return 1;
+    }
+    else if(array[0][1] == ' ' && ((array[0][0] == 'X' && array[0][2] == 'X')||(array[1][1] == 'X' && array[2][1] == 'X'))){
+        array[0][1] = 'X';
+        return 1;
+    }
+    else if(array[1][2] == ' ' && ((array[0][2] == 'X' && array[2][2] == 'X')||(array[1][0] == 'X' && array[1][1] == 'X'))){
+        array[1][2] = 'X';
+        return 1;
+    }
+    else if(array[2][1] == ' ' && ((array[2][0] == 'X' && array[2][2] == 'X')||(array[0][1] == 'X' && array[1][1] == 'X'))){
+        array[2][1] = 'X';
+        return 1;
+    }
+    else if(array[1][0] == ' ' && ((array[1][1] == 'X' && array[1][2] == 'X')||(array[1][0] == 'X' && array[1][1] == 'X'))){
+        array[1][0] = 'X';
+        return 1;
+    }
+    return 0;    
+
+}
+
+bool stopLosses(char array[3][3]){
+    //this function, called after checkWins, checks to see if the player can win next turn.
+    //if they can, the computer stops it, since that is most important besides winning itself
+    if(array[0][0] == ' ' && ((array[0][1] == 'O' && array[0][2] == 'O')||(array[1][1] == 'O' && array[2][2] == 'O')||(array[1][0] == 'O' && array[2][0] == 'O'))){
+        array[0][0] = 'X';
+        return 1;
+    }
+    else if(array[0][2] == ' ' && ((array[0][1] == 'O' && array[0][0] == 'O')||(array[1][1] == 'O' && array[2][0] == 'O')||(array[1][2] == 'O' && array[2][2] == 'O'))){
+        array[0][2] = 'X';
+        return 1;
+    }
+    else if(array[2][2] == ' ' && ((array[0][2] == 'O' && array[1][2] == 'O')||(array[2][1] == 'O' && array[2][0] == 'O')||(array[1][1] == 'O' && array[0][0] == 'O'))){
+        array[2][2] = 'X';
+        return 1;
+    }
+    else if(array[2][0] == ' ' && ((array[0][0] == 'O' && array[1][0] == 'O')||(array[2][1] == 'O' && array[2][2] == 'O')||(array[1][1] == 'O' && array[0][2] == 'O'))){
+        array[2][0] = 'X';
+        return 1;
+    }
+    else if(array[0][1] == ' ' && ((array[0][0] == 'O' && array[0][2] == 'O')||(array[1][1] == 'O' && array[2][1] == 'O'))){
+        array[0][1] = 'X';
+        return 1;
+    }
+    else if(array[1][2] == ' ' && ((array[0][2] == 'O' && array[2][2] == 'O')||(array[1][0] == 'O' && array[1][1] == 'O'))){
+        array[1][2] = 'X';
+        return 1;
+    }
+    else if(array[2][1] == ' ' && ((array[2][0] == 'O' && array[2][2] == 'O')||(array[0][1] == 'O' && array[1][1] == 'O'))){
+        array[2][1] = 'X';
+        return 1;
+    }
+    else if(array[1][0] == ' ' && ((array[1][1] == 'O' && array[1][2] == 'O')||(array[1][0] == 'O' && array[1][1] == 'O'))){
+        array[1][0] = 'X';
+        return 1;
+    }
+    return 0;
+}
