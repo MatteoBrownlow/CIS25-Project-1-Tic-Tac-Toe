@@ -33,3 +33,33 @@ int main(){
         } while(playAgain != 'y' && playAgain != 'n');
         }
     }
+    else{       //this does the same thing, but for one player vs the computer, and it "flips a coin" each game for turn order
+        while(playAgain == 'y'){    
+        long randomNumber = time(0);
+        srand(randomNumber);
+        int turnOrder = rand() % 2;
+        cout << "Flipping coin..." << endl;
+        sleep(2);       
+        if(turnOrder == 1){
+        
+            humanGoesFirst(array);
+            return 0;
+        }
+        else{
+            computerGoesFirst(array);
+        }
+        cout << "The score is 0 to " << computerWins << ", with " << computerDraws << " draw";
+        if(computerDraws != 1){
+            cout << "s";
+        }
+        cout << "." << endl;
+        eraseArray(array);
+        do{
+            cout << "Play again? (y/n)" << endl;
+            cin >> playAgain;
+        } while(playAgain != 'y' && playAgain != 'n');
+        }
+    }
+
+    
+}
