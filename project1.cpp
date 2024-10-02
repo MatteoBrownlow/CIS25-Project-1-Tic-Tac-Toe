@@ -474,3 +474,35 @@ bool stopLosses(char array[3][3]){
     }
     return 0;
 }
+
+void rotateClockwise(char array[3][3]){
+	char temp = array[0][0];
+	array[0][0] = array[2][0];
+	array[2][0] = array[2][2];
+	array[2][2] = array[0][2];
+	array[0][2] = temp;
+	temp = array[0][1];
+	array[0][1] = array[1][0];
+	array[1][0] = array[2][1];
+	array[2][1] = array[1][2];
+	array[1][2] = temp;
+}   
+//these 3 functions rotate the board, for when the player goes first
+//this limits the number of variations, which means less if/else statements are needed
+
+int rotateClockwise(char array[3][3], int rotations){
+	for(int i = 0; i < rotations; i++){
+    	rotateClockwise(array);
+	}
+	return 0;
+}   
+
+int counterClockwise(char array[3][3], int rotations){
+	for(int i = 0; i < rotations; i++){
+        for(int j = 0; j < 3; j++){
+            rotateClockwise(array);
+        }
+	}
+	return 0;
+}
+
