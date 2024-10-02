@@ -276,3 +276,125 @@ void yourMove(char array[3][3]){
     	}
    	}
 }
+
+int humanGoesFirst(char array[3][3]){
+    bool won, stoppedLoss, move4 = 0;
+    cout << "You go first." << endl;    //this function is for when the player goes first, since the computer has to make different moves
+	
+    yourMove(array);
+    cout << "Your move:" << endl;
+	printArray(array);  //the player's first move
+
+	int rotations = 0;
+	if(array[1][1] == 'O'){
+    	array[0][0] = 'X';
+	}                   //to limit the number of variations and thus the number of if/else statements required, you
+	else{               //can rotate the board. On move 2, this rotation shrinks the number of variations from 35 to 20
+    	array[1][1] = 'X';
+    	while(array[0][0] != 'O' && array[0][1] != 'O'){
+        	rotateClockwise(array);
+            rotations++;
+    	}
+    	counterClockwise(array, rotations);
+	}
+	sleep(1);
+    cout << "Computer move:" << endl;
+    printArray(array);
+
+    yourMove(array);    //the player's second move
+    cout << "Your move:" << endl;
+    printArray(array);
+
+    rotateClockwise(array, rotations);
+    stoppedLoss = stopLosses(array);    //the computer's second move
+    if(stoppedLoss == 0){
+        if(array[0][0] == 'O' && array[1][2] == ' '){
+            array[1][0] = 'X';
+        }
+        else{
+            array[0][2] = 'X';
+        }
+    }
+    counterClockwise(array, rotations);
+    sleep(1);
+    cout << "Computer move:" << endl;
+    printArray(array);
+
+    yourMove(array);    //the player's third move
+    cout << "Your move:" << endl;
+    printArray(array);
+
+    rotateClockwise(array, rotations);
+    won = checkWins(array);     //the computer's third move
+    if(won == 0){
+        stoppedLoss = stopLosses(array);
+        if(stoppedLoss == 0){       //if the computer doesn't win or stop any direct wins, only three other moves are needed for the other variations
+            if(array[1][0] == ' '){
+                array[1][0] = 'X';
+            }
+            else if(array[2][1] == 'O'){
+                array[0][2] = 'X';
+            }
+            else{
+                array[0][1] = 'X';
+            }
+        }
+    }
+    else{
+        counterClockwise(array, rotations);
+        sleep(1);
+        cout << "Computer move:" << endl;
+        printArray(array);
+        cout << "The machine wins! Humanity's downfall is imminent." << endl;
+        computerWins++;
+        return 0;
+    }
+    counterClockwise(array, rotations);
+    sleep(1);
+    cout << "Computer move:" << endl;
+    printArray(array);
+
+    yourMove(array);    //the player's fourth move
+    cout << "Your move:" << endl;
+    printArray(array);
+
+    rotateClockwise(array, rotations);
+    won = checkWins(array);
+    if(won == 0){
+        stoppedLoss = stopLosses(array);
+        if(stoppedLoss == 0){  
+            for(int i = 0; i < 3; i ++){    //if the computer's fourth move isn't winning or stopping a direct win
+                for(int j = 0; j < 3; j++){ //it will not matter at all, so it can just move in the first open square
+                    if(array[i][j] == ' '){
+                        move4 = 1;
+                        array[i][j] = 'X';
+                        break;
+                    }
+                }
+                if(move4){
+                    break;
+                }
+            }
+        }
+    }
+    else{
+        counterClockwise(array, rotations);
+        sleep(1);
+        cout << "Computer move:" << endl;
+        printArray(array);
+        cout << "The machine wins! Humanity's downfall is imminent." << endl;
+        computerWins++;
+        return 0;
+    }
+    counterClockwise(array, rotations);
+    sleep(1); 
+    cout << "Computer move:" << endl;
+    printArray(array);
+
+    yourMove(array);
+    cout << "Your move:" << endl;
+    printArray(array);
+    cout << "It's a draw." << endl;  //the ninth move will always be a draw, because of the moves the computer makes
+    computerDraws++;
+    return 0;
+}
