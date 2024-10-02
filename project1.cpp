@@ -506,3 +506,79 @@ int counterClockwise(char array[3][3], int rotations){
 	return 0;
 }
 
+int twoPlayerGame(char array[3][3]){        
+    cout << "Player 1 is O's, player 2 is X's" << endl;
+    for(int i = 0; i < 4; i++){
+    cout << "Player 1 - ";
+    yourMove(array);
+    printArray(array);
+    if(playerOneWinCheck(array)){
+        cout << "Player one wins!" << endl;
+        playerOneWins++;
+        return 0;
+    }       //the two player game simply asks the players for their moves a total of 9 times
+            //it checks to see if a player won, and ends the game early if one did
+    cout << "Player 2 - ";
+    yourMoveP2(array);
+    printArray(array);
+    if(playerTwoWinCheck(array)){
+        cout << "Player two wins!" << endl;
+        playerOneLosses++;
+        return 0;
+    }
+    }
+
+    cout << "Player 1 - ";
+    yourMove(array);
+    printArray(array);
+    if(playerOneWinCheck(array)){
+        cout << "Player one wins!" << endl;
+        playerOneWins++;
+        return 0;
+    }
+    else{
+        cout << "It's a draw." << endl;
+        playerOneDraws++;
+        return 0;   //if no one has won and nine moves have been made, it's a draw
+    }
+}
+
+bool playerOneWinCheck(char array[3][3]){   //this function checks every possible win, for player 1
+    if((array[0][1] == 'O') && ((array[0][0] == 'O' && array[0][2] == 'O') || (array[1][1] == 'O' && array[2][1] == 'O'))){
+        return true;
+    }
+    if((array[1][0] == 'O') && ((array[0][0] == 'O' && array[2][0] == 'O') || (array[1][1] == 'O' && array[1][2] == 'O'))){
+        return true;
+    }
+    if((array[2][1] == 'O') && (array[2][0] == 'O' && array[2][2] == 'O')){
+        return true;
+    }
+    if((array[1][2] == 'O') && (array[0][2] == 'O' && array[2][2] == 'O')){
+        return true;
+    }
+    if((array[1][1] == 'O') && ((array[0][0] == 'O' && array[2][2] == 'O') || (array[2][0] == 'O' && array[0][2] == 'O'))){
+        return 1;
+    }
+    return false;
+}
+
+bool playerTwoWinCheck(char array[3][3]){   //this function does the same, but for player 2
+    if((array[0][1] == 'X') && ((array[0][0] == 'X' && array[0][2] == 'X') || (array[1][1] == 'X' && array[2][1] == 'X'))){
+        return true;
+    }
+    if((array[1][0] == 'X') && ((array[0][0] == 'X' && array[2][0] == 'X') || (array[1][1] == 'X' && array[1][2] == 'X'))){
+        return true;
+    }
+    if((array[2][1] == 'X') && (array[2][0] == 'X' && array[2][2] == 'X')){
+        return true;
+    }
+    if((array[1][2] == 'X') && (array[0][2] == 'X' && array[2][2] == 'X')){
+        return true;
+    }
+    if((array[1][1] == 'X') && ((array[0][0] == 'X' && array[2][2] == 'X') || (array[2][0] == 'X' && array[0][2] == 'X'))){
+        return true;
+    }
+    return false;
+}
+
+
