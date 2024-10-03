@@ -6,3 +6,4 @@ When the human plays against the program, it is impossible for the human to win,
 a tie or a win for itself every time. This program also tracks wins, losses, and ties per session. 
 
 <img width="303" alt="Screen Shot 2024-10-02 at 6 00 11 PM" src="https://github.com/user-attachments/assets/e556d48a-dcfb-48f3-ae38-dd9026ff07eb">
+<img width="504" alt="Screen Shot 2024-10-02 at 5 58 50 PM" src="https://github.com/user-attachments/assets/fbaf972c-1b16-4aca-9937-a724865b0694">
